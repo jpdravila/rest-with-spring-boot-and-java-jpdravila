@@ -1,6 +1,7 @@
 package restwithspringjpdravila;
 
 import org.springframework.web.bind.annotation.*;
+import restwithspringjpdravila.Exceptions.UnsupportedMathOperationException;
 
 import java.util.concurrent.atomic.AtomicLong;
 @RestController
@@ -14,7 +15,7 @@ public class MathController {
             @PathVariable(value = "numberTwo") String numberTwo
     ) throws Exception{
         if(!isNumeric(numberOne) || !isNumeric(numberTwo)){
-            throw new Exception();
+            throw new UnsupportedMathOperationException("Please set a numeric values");
         }
         return convertToDouble(numberOne) + convertToDouble(numberTwo);
     }
